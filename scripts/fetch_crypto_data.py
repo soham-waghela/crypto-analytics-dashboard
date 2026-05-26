@@ -4,6 +4,7 @@ import os
 
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
+from datetime import datetime
 
 load_dotenv()
 
@@ -42,6 +43,8 @@ crypto_df.columns = [
 ]
 
 engine = create_engine(DATABASE_URL)
+
+crypto_df["fetched_at"] = datetime.now()
 
 crypto_df.to_sql(
     "crypto_prices",
