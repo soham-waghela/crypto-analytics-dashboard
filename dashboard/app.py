@@ -88,10 +88,15 @@ if not filtered_df.empty:
 
   st.subheader("Top Cryptocurrencies")
 
-  top_coins = filtered_df.sort_values(
-      by="market_cap",
-      ascending=False
-  )
+  latest_coins = filtered_df.drop_duplicates(
+        subset="coin_name",
+        keep="last"
+    )
+
+  top_coins = latest_coins.sort_values(
+        by="market_cap",
+        ascending=False
+    )
 
   st.dataframe(top_coins[["coin_name", "current_price", "market_cap"]])
 
