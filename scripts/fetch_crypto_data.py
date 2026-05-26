@@ -51,3 +51,8 @@ crypto_df.to_sql(
 )
 
 print("Crypto data inserted successfully!")
+
+crypto_df.to_csv(
+    "crypto_data.csv",
+    index=False
+)
