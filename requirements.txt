@@ -1,0 +1,8 @@
+pandas
+requests
+sqlalchemy
+psycopg2
+streamlit
+streamlit-autorefresh
+python-dotenv
+matplotlib
