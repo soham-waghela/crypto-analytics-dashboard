@@ -53,9 +53,15 @@ crypto_df.to_sql(
     index=False
 )
 
-print("Crypto data inserted successfully!")
 
-crypto_df.to_csv(
+full_df = pd.read_sql(
+    "SELECT * FROM crypto_prices",
+    engine
+)
+
+full_df.to_csv(
     "crypto_data.csv",
     index=False
 )
+
+print("Crypto data inserted successfully!")
