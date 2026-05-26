@@ -21,7 +21,9 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 # query = "SELECT * FROM crypto_prices"
 
 # df = pd.read_sql(query, engine)
-df = pd.read_csv("../crypto_data.csv")
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+csv_path = os.path.join(BASE_DIR, "crypto_data.csv")
+df = pd.read_csv(csv_path)
 
 selected_coins = st.sidebar.multiselect(
     "Select Cryptocurrencies",
