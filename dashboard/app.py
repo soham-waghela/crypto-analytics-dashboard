@@ -96,12 +96,22 @@ if not filtered_df.empty:
   st.dataframe(top_coins[["coin_name", "current_price", "market_cap"]])
 
   st.subheader('Histrorical Price Trends')
+  
   historical_prices = filtered_df.sort_values(
-      by="fetched_at"
-      )
+    by="fetched_at"
+ )
+
+  historical_prices["fetched_at"] = pd.to_datetime(
+    historical_prices["fetched_at"]
+ )
+
+  historical_prices["formatted_time"] = (
+    historical_prices["fetched_at"]
+    .dt.strftime("%H:%M")
+)
   
   pivot_df = historical_prices.pivot_table(
-    index="fetched_at",
+    index="formatted_time",
     columns="coin_name",
     values="current_price"
 )
